@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+<meta charset="UTF-8">
+
+<style>
+
+body{
+    margin:0;
+    width:600px;
+    height:40px;
+
+    background:#000;
+
+    overflow:hidden;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    color:#00FF00;
+
+    font-family:Arial;
+
+    font-size:28px;
+
+    font-weight:bold;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div id="painel">
+CARREGANDO...
+</div>
+
+<script>
+
+function atualizar(){
+
+    const hoje =
+        new Date();
+
+    const copa =
+        new Date("2026-06-11");
+
+    const diferenca =
+        copa - hoje;
+
+    const dias =
+        Math.floor(
+            diferenca /
+            (1000 * 60 * 60 * 24)
+        );
+
+    document.getElementById("painel")
+        .innerText =
+        `COPA 2026 FALTAM ${dias} DIAS`;
+
+}
+
+setInterval(atualizar,60000);
+
+atualizar();
+
+</script>
+
+</body>
+</html>
