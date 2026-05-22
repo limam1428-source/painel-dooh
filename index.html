@@ -5,30 +5,209 @@
 
 <meta charset="UTF-8">
 
+<title>Rumo ao Hexa</title>
+
 <style>
 
-body{
+*{
     margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+
     width:600px;
     height:40px;
 
+    overflow:hidden;
+
     background:#000;
+
+    font-family:Arial, sans-serif;
+
+}
+
+/* PAINEL */
+
+.painel{
+
+    width:600px;
+    height:40px;
 
     overflow:hidden;
 
-    display:flex;
+    position:relative;
 
-    justify-content:center;
+    background:linear-gradient(
+        90deg,
+        #002776,
+        #009739,
+        #FFDF00
+    );
+
+}
+
+/* TEXTO */
+
+.texto{
+
+    position:absolute;
+
+    display:flex;
 
     align-items:center;
 
-    color:#00FF00;
+    gap:18px;
 
-    font-family:Arial;
+    white-space:nowrap;
 
-    font-size:28px;
+    font-size:24px;
 
     font-weight:bold;
+
+    top:4px;
+
+    animation:rolar 8s linear infinite;
+
+    text-shadow:
+        0 0 5px currentColor,
+        0 0 10px currentColor;
+
+}
+
+/* BANDEIRA */
+
+.bandeira{
+
+    width:36px;
+
+    height:auto;
+
+    animation:vento 1s ease-in-out infinite;
+
+    transform-origin:left center;
+
+    filter:
+        drop-shadow(0 0 4px #FFF);
+
+}
+
+/* EFEITO VENTO */
+
+@keyframes vento{
+
+    0%{
+
+        transform:
+            skewY(0deg)
+            rotate(0deg);
+
+    }
+
+    25%{
+
+        transform:
+            skewY(4deg)
+            rotate(2deg);
+
+    }
+
+    50%{
+
+        transform:
+            skewY(0deg)
+            rotate(0deg);
+
+    }
+
+    75%{
+
+        transform:
+            skewY(-4deg)
+            rotate(-2deg);
+
+    }
+
+    100%{
+
+        transform:
+            skewY(0deg)
+            rotate(0deg);
+
+    }
+
+}
+
+/* CORES */
+
+.copa{
+
+    color:#FFDF00;
+
+}
+
+.hexa{
+
+    color:#FFFFFF;
+
+}
+
+.dias{
+
+    color:#00FF66;
+
+}
+
+.brasil{
+
+    color:#00BFFF;
+
+}
+
+/* Ajustado para alinhar as duas metades sem espaço entre elas */
+.urb{
+    display: inline-flex;
+}
+
+.urb-branco {
+    color: #FFFFFF;
+}
+
+.urb-azul {
+    color: #0000FF;
+}
+
+.eletro{
+
+    color:#FFA500;
+
+}
+
+.Ubnews{
+
+    color:#0066FF;
+
+}
+
+
+
+/* TEXTO ROLANDO */
+
+@keyframes rolar{
+
+    from{
+
+        transform:translateX(600px);
+
+    }
+
+    to{
+
+        transform:translateX(-1800px);
+
+    }
+
 }
 
 </style>
@@ -37,8 +216,38 @@ body{
 
 <body>
 
-<div id="painel">
-CARREGANDO...
+<div class="painel">
+
+<div class="texto">
+
+<!-- BANDEIRA -->
+
+<img
+    src="https://upload.wikimedia.org/wikipedia/en/0/05/Flag_of_Brazil.svg"
+    class="bandeira"
+>
+
+<!-- TEXTO -->
+
+<span class="copa">
+⚽ COPA 2026
+</span>
+
+<span class="hexa">
+RUMO AO HEXA
+</span>
+
+<span class="dias" id="dias">
+FALTAM 000 DIAS
+</span>
+
+<span class="brasil">
+BRASIL 2026
+</span>
+
+
+</div>
+
 </div>
 
 <script>
@@ -49,7 +258,7 @@ function atualizar(){
         new Date();
 
     const copa =
-        new Date("2026-06-11");
+        new Date("2026-06-12");
 
     const diferenca =
         copa - hoje;
@@ -60,9 +269,9 @@ function atualizar(){
             (1000 * 60 * 60 * 24)
         );
 
-    document.getElementById("painel")
+    document.getElementById("dias")
         .innerText =
-        `COPA 2026 FALTAM ${dias} DIAS`;
+        `FALTAM ${dias} DIAS`;
 
 }
 
@@ -73,4 +282,5 @@ atualizar();
 </script>
 
 </body>
+
 </html>
